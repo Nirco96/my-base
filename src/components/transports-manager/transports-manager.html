@@ -1,5 +1,5 @@
 <!-- Generated template for the TransportsManagerComponent component -->
-<div>
-  Next transport arrives in :
-  {{closestArrivalTime}}
+<div class=".next-arrival">
+  ההסעה הבאה תגיע ב-
+  {{nearestTransport.arrivalTime | date: "HH:mm"}}
 </div>

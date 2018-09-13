@@ -13,25 +13,32 @@ import {Transport} from "../transport/transport.model";
 })
 export class TransportsManagerComponent implements OnInit {
 
-  closestArrivalTime: Date = new Date();
+  nearestTransport: Transport;
 
   @Input()
   public transports: Transport[];
 
   constructor() {
+    this.nearestTransport = new Transport(new Date(), ["Mahan"]);
   }
 
   ngOnInit(): void {
     this.computeClosestArrivalTime();
   }
 
-  public computeClosestArrivalTime() : void {
-    // this.closestArrivalTime;
-    this.transports.forEach(transport => {
-      if (this.closestArrivalTime < transport.arrivalTime) {
-        this.closestArrivalTime = transport.arrivalTime;
+  public computeClosestArrivalTime(): void {
+    // this.nearestTransport;
+    // assuming you have an array of Date objects - everything else is crap:
+
+    // Sorting by the closest to the current date, and getting the first one after the current date
+    this.nearestTransport = this.transports.sort((a, b) => {
+      let distancea = Math.abs(new Date() - a.arrivalTime);
+      let distanceb = Math.abs(new Date() - b.arrivalTime);
+      return distancea - distanceb; // sort a before b when the distance is smaller
+    }).filter(transport => {
+        return new Date() - transport.arrivalTime > 0;
       }
-    });
+    )[0];
   }
 }
 

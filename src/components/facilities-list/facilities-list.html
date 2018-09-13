@@ -4,5 +4,8 @@
     <ion-col col-auto *ngFor="let facility of _facilities" text-center>
       <facility [displayName]="facility.name" [iconName]="facility.icon"></facility>
     </ion-col>
+    <ion-col col-auto>
+      <transports-manager [transports]="_transports"></transports-manager>
+    </ion-col>
   </ion-row>
 </ion-grid>
