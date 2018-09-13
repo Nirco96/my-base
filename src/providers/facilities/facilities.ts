@@ -15,6 +15,9 @@ export class FacilitiesProvider {
   }
 
   getFacilities() : Facility[] {
-    return [new Facility("Gym", "tennisball"), new Facility("Rides", "bus"), new Facility("Shekem", "cafe")]
+    return [new Facility("Gym", "tennisball"), new Facility("Rides", "bus"), new Facility("Shekem", "cafe"),
+      new Facility("Gym", "tennisball"), new Facility("Rides", "bus"), new Facility("Shekem", "cafe"),
+      new Facility("Gym", "tennisball"), new Facility("Rides", "bus"), new Facility("Shekem", "cafe"),
+      new Facility("Gym", "tennisball"), new Facility("Rides", "bus"), new Facility("Shekem", "cafe")]
   }
 }
