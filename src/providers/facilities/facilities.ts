@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Facility} from "../../components/facility/facility.model";
 
@@ -11,11 +10,11 @@ import {Facility} from "../../components/facility/facility.model";
 @Injectable()
 export class FacilitiesProvider {
 
-  constructor(public http: HttpClient) {
+  constructor() {
     console.log('Hello FacilitiesProvider Provider');
   }
 
   getFacilities() : Facility[] {
-    return []
+    return [new Facility("Gym", "tennisball"), new Facility("Rides", "bus"), new Facility("Shekem", "cafe")]
   }
 }

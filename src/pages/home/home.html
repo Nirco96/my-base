@@ -1,10 +1,7 @@
 <ion-grid>
   <ion-row text-center>
-    <ion-col col-1>
-      1 of 2
-    </ion-col>
-    <ion-col col-1>
-      2 of 2
-    </ion-col>
+   <ion-col col-2 *ngFor="let facility of facilities">
+     <facility [displayName]="facility.name" [iconName]="facility.icon"></facility>
+   </ion-col>
   </ion-row>
 </ion-grid>
