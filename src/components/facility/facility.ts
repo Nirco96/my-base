@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 /**
  * Generated class for the FacilityComponent component.
@@ -12,11 +12,27 @@ import { Component } from '@angular/core';
 })
 export class FacilityComponent {
 
-  text: string;
+  private _numOfUpdates : number;
 
-  constructor() {
-    console.log('Hello FacilityComponent Component');
-    this.text = 'Hello World';
+  _iconName : string;
+  _displayName : string;
+
+
+  @Input()
+  set iconName(iconName) {
+    this._iconName = iconName;
   }
 
+  @Input()
+  set displayName(displayName) {
+    this._displayName = displayName;
+  }
+
+  constructor() {
+
+  }
+
+  public onUpdate() : void {
+    this._numOfUpdates++;
+  }
 }
