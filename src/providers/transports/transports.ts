@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Transport} from "../../components/transport/transport.model";
+import {Observable} from "rxjs/index";
 
 /*
   Generated class for the TransportsProvider provider.
@@ -10,10 +10,17 @@ import {Transport} from "../../components/transport/transport.model";
 */
 @Injectable()
 export class TransportsProvider {
+  private transportCollection: AngularFirestoreCollection<Transport>;
+  transports: Observable<Transport[]>;
 
-  constructor() {
+  constructor(afs: AngularFirestore) {
+    this.transportCollection = afs.collection("transports");
+    this.transports = this.transportCollection.valueChanges();
   }
 
+  getTransportsFromFirebase() : Observable<Transport[]> {
+    return this.transports;
+  }
   public getTransports() {
     return [new Transport(new Date(), ["Mahan", "Herev Magen"]), new Transport(new Date("September 13, 2018 14:20:00"), ["Tree Square", "infirmary"])]
   }
