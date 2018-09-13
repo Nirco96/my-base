@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Facility} from "../../components/facility/models/facility.model";
 
 /**
  * Generated class for the FacilityPage page.
@@ -15,14 +16,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FacilityPage {
 
-  public pageName : string;
+  public facility : Facility;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+   this.facility = new Facility("f", "", "", "", "", "");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FacilityPage');
     console.log(this.navParams);
-    this.pageName = this.navParams.get("page");
+    this.facility = this.navParams.get("facility");
 
   }
 

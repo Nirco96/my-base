@@ -1,7 +1,7 @@
 <!-- Generated template for the FacilityComponent component -->
 <div class="facility" (click)="openFacilityPage()">
-  <button ion-button icon-only round [style.background-color]="bgColor">
-    <ion-icon name="{{iconName}}"></ion-icon>
+  <button ion-button icon-only round [style.background-color]="facility.bgcolor">
+    <ion-icon name="{{facility.icon}}"></ion-icon>
   </button>
-  {{displayName}}
+  {{facility.name}}
 </div>

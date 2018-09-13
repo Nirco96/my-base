@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {FacilitiesProvider} from "../../providers/facilities/facilities";
-import {Facility} from "../../components/facility/facility.model";
+import {Facility} from "../../components/facility/models/facility.model";
 
 @Component({
   selector: 'page-home',
