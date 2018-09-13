@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Facility} from "../../components/facility/facility.model";
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from "rxjs";
+import { map} from "rxjs/operators";
 
 
 /*
@@ -12,13 +13,18 @@ import {Observable} from "rxjs";
 */
 @Injectable()
 export class FacilitiesProvider {
-  private itemsCollection: AngularFirestoreCollection<Facility>;
-  items: Observable<Facility[]>;
+  private itemsCollection: AngularFirestoreCollection<any[]>;
+  private items: Observable<Facility[]>;
 
   constructor(afs: AngularFirestore) {
     console.log('Hello FacilitiesProvider Provider');
     this.itemsCollection = afs.collection("facilities");
-    this.items = this.itemsCollection.valueChanges();
+    let observable = this.itemsCollection.valueChanges();
+    this.items = observable.pipe(map((facility) => {
+      let array = [];
+      facility.forEach(json => array.push(Facility.fromJson(json)));
+      return array;
+    }));
   }
 
   getFacilities() : Observable<Facility[]> {

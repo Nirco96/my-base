@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {NavController} from "ionic-angular";
 import {FacilityPage} from "../../pages/facility/facility";
+import {Facility} from "./facility.model";
 /**
  * Generated class for the FacilityComponent component.
  *
@@ -14,6 +15,12 @@ import {FacilityPage} from "../../pages/facility/facility";
 export class FacilityComponent {
 
   private _numOfUpdates : number;
+
+  @Input()
+  facility : Facility;
+
+  @Input()
+  public bgColor : string;
 
   @Input()
   public iconName : string;
