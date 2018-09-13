@@ -1,6 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 import {Facility} from "../../components/facility/facility.model";
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
+import {Observable} from "rxjs";
+
+export interface Item { name: string; }
 
 /*
   Generated class for the FacilitiesProvider provider.
@@ -10,12 +14,16 @@ import {Facility} from "../../components/facility/facility.model";
 */
 @Injectable()
 export class FacilitiesProvider {
+  private itemsCollection: AngularFirestoreCollection<Item>;
+  items: Observable<Item[]>;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, afs: AngularFirestore) {
     console.log('Hello FacilitiesProvider Provider');
+    this.itemsCollection = afs.collection("facilities");
+    this.items = this.itemsCollection.valueChanges();
   }
 
-  getFacilities() : Facility[] {
+  getFacilities(): Facility[] {
     return []
   }
 }
