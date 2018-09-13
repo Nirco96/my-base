@@ -15,11 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FacilityPage {
 
+  public pageName : string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FacilityPage');
+    console.log(this.navParams);
+    this.pageName = this.navParams.get("page");
+
   }
 
 }
