@@ -7,7 +7,8 @@
   "author": "Ionic Framework",
   "config": {
     "ionic_www_dir": "public",
-    "ionic_build_dir": "public/build"
+    "ionic_build_dir": "public/build",
+    "ionic_enable_lint": false
   },
   "homepage": "http://ionicframework.com/",
   "private": true,
@@ -52,7 +53,4 @@
       "cordova-plugin-firebase": {}
     }
   },
-  "config": {
-    "ionic_enable_lint": false
-  }
 }
