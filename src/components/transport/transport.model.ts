@@ -1,24 +1,25 @@
 import {Station} from "./station.model";
+import {Facility} from "../facility/facility.model";
+import {Routine} from "./routine.model";
 
 export class Transport {
-  private _routine : Array<Date>;
+  private _routine : Array<Routine>;
   private _stations : Array<Station>;
 
-  constructor (routine : Array<any>, stations: Array<Station>) {
-    routine.forEach(routine => {
-      routine.departureTimes.forEach(departureTime => {
-        this._routine.push(new Date(routine.day + departureTime));
-      })
-    });
-
+  constructor (routine : Array<Routine>, stations: Array<Station>) {
+    this._routine = routine;
     this._stations = stations;
   }
 
-  get routine(): Array<Date> {
+  static fromJson(json : any) : Transport {
+    return new Transport(json.routine, json.stations);
+  }
+
+  get routine(): Array<Routine> {
     return this._routine;
   }
 
-  set routine(value: Array<Date>) {
+  set routine(value: Array<Routine>) {
     this._routine = value;
   }
 

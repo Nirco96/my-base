@@ -3,10 +3,14 @@ export class Station {
   private _id : number;
   private _delta : number;
 
-  constructor(name : string, id : number, delta : number) {
+  constructor(delta : number, id : number, name : string) {
     this._name = name;
     this._id = id;
     this._delta = delta;
+  }
+
+  static fromJson(json : any) {
+    return new Station(json.delta, json.id, json.name);
   }
 
   get name(): string {
