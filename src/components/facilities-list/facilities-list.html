@@ -1,8 +1,8 @@
 <!-- Generated template for the FacilitiesListComponent component -->
 <ion-grid>
   <ion-row justify-content-center>
-    <ion-col col-auto *ngFor="let facility of _facilities">
-      <facility [displayName]="facility.name" [iconName]="facility.icon"></facility>
+    <ion-col col-auto *ngFor="let facility of facilities">
+      <facility [displayName]="facility.name" [iconName]="facility.icon" [bgColor]="facility.bgcolor"></facility>
     </ion-col>
     <ion-col col-auto>
       <transports-manager [transports]="_transports"></transports-manager>

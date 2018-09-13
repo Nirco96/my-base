@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Facility} from "../facility/facility.model";
 import {FacilitiesProvider} from "../../providers/facilities/facilities";
 import {TransportsProvider} from "../../providers/transports/transports";
@@ -16,8 +16,10 @@ import {Transport} from "../transport/transport.model";
 })
 export class FacilitiesListComponent {
 
-  private _facilities : Facility[];
   private _transports : Transport[];
+
+  @Input()
+  facilities : Facility[];
 
   constructor(private _facilitiesProvider : FacilitiesProvider, private _transportsProvider : TransportsProvider) {
     this._facilities = _facilitiesProvider.getFacilities();

@@ -1,4 +1,5 @@
 {
+  "engines" : { "node" : "8.12.0" },
   "name": "my-base",
   "version": "0.0.1",
   "author": "Ionic Framework",
