@@ -1,4 +1,4 @@
-export class Routine {
+export class TransportRoutine {
   private _day : number;
   private _arrivalTimes : Array<string>;
 

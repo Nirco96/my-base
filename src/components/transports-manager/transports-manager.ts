@@ -27,18 +27,28 @@ export class TransportsManagerComponent implements OnInit {
   }
 
   public computeClosestArrivalTime(): void {
-    // this.nearestTransport;
-    // assuming you have an array of Date objects - everything else is crap:
+    let transportsToday = [];
+    this.transports.forEach(transport => {
+      transportsToday = transport.routine.filter(routine => {
+        return routine.day == new Date().getDay();
+      })
+    });
 
+    //
+    // this.transports.filter(transport => {
+    // });
+
+    // assuming you have an array of Date objects - everything else is crap:
+    //
     // Sorting by the closest to the current date, and getting the first one after the current date
-    // this.nearestTransport = this.transports.sort((a, b) => {
-    //   let distancea = Math.abs(new Date() - a.arrivalTime);
-    //   let distanceb = Math.abs(new Date() - b.arrivalTime);
-    //   return distancea - distanceb; // sort a before b when the distance is smaller
-    // }).filter(transport => {
-    //     return new Date() - transport.arrivalTime > 0;
-    //   }
-    // )[0];
+    this.nearestTransport = this.transports.sort((a, b) => {
+      let distancea = Math.abs(new Date() - a.arrivalTime);
+      let distanceb = Math.abs(new Date() - b.arrivalTime);
+      return distancea - distanceb; // sort a before b when the distance is smaller
+    }).filter(transport => {
+        return new Date() - transport.arrivalTime > 0;
+      }
+    )[0];
   }
 }
 

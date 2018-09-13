@@ -12,10 +12,8 @@ import {TransportsProvider} from "../../providers/transports/transports";
 export class HomePage {
 
   private facilities : Facility[];
-  private transports : Transport[];
 
   constructor(public navCtrl: NavController, private _facilityProvider : FacilitiesProvider, private _transportProvider : TransportsProvider) {
     _facilityProvider.getFacilities().subscribe((facilities) => this.facilities = facilities);
-    _transportProvider.getTransports().subscribe((transports) => this.transports = transports);
   }
 }

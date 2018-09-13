@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {NavController} from "ionic-angular";
 import {FacilityPage} from "../../pages/facility/facility";
 import {Facility} from "./models/facility.model";
+import {TransportsPage} from "../../pages/transports/transports";
 /**
  * Generated class for the FacilityComponent component.
  *
@@ -28,8 +29,11 @@ export class FacilityComponent {
   @Input()
   public displayName : string;
 
+  @Input()
+  public isTransport : boolean = true;
+
   constructor(public navCtrl: NavController) {
-    
+
   }
 
   public onUpdate() : void {
@@ -37,7 +41,10 @@ export class FacilityComponent {
   }
 
   public openFacilityPage(): void{
-    console.log("or is king");
-    this.navCtrl.push(FacilityPage,{facility: this.facility});
+    if (this.isTransport) {
+      this.navCtrl.push(FacilityPage, {facility: this.facility});
+    } else {
+      this.navCtrl.push(TransportsPage)
+    }
   }
 }

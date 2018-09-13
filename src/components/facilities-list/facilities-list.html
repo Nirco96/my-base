@@ -2,9 +2,10 @@
 <ion-grid>
   <ion-row justify-content-center>
     <ion-col>
+      <facility [facility]="_busFacility" [isTransport]="false"></facility>
     </ion-col>
     <ion-col col-4 col-lg-2 *ngFor="let facility of facilities">
-      <facility [facility]="facility" [displayName]="facility.name" [iconName]="facility.icon" [bgColor]="facility.bgcolor"></facility>
+      <facility [facility]="facility"></facility>
     </ion-col>
   </ion-row>
 </ion-grid>

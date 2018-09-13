@@ -1,12 +1,11 @@
 import {Station} from "./station.model";
-import {Facility} from "../facility/facility.model";
-import {Routine} from "./routine.model";
+import {TransportRoutine} from "./transport-routine.model";
 
 export class Transport {
-  private _routine : Array<Routine>;
+  private _routine : Array<TransportRoutine>;
   private _stations : Array<Station>;
 
-  constructor (routine : Array<Routine>, stations: Array<Station>) {
+  constructor (routine : Array<TransportRoutine>, stations: Array<Station>) {
     this._routine = routine;
     this._stations = stations;
   }
@@ -15,11 +14,11 @@ export class Transport {
     return new Transport(json.routine, json.stations);
   }
 
-  get routine(): Array<Routine> {
+  get routine(): Array<TransportRoutine> {
     return this._routine;
   }
 
-  set routine(value: Array<Routine>) {
+  set routine(value: Array<TransportRoutine>) {
     this._routine = value;
   }
 

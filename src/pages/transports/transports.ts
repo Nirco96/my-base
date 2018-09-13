@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {TransportsProvider} from "../../providers/transports/transports";
+import {Transport} from "../../components/transport/transport.model";
 
 /**
  * Generated class for the TransportsPage page.
@@ -15,7 +17,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TransportsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private transports : Transport[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private _transportProvider : TransportsProvider) {
+    _transportProvider.getTransports().subscribe((transports) => this.transports = transports);
   }
 
   ionViewDidLoad() {

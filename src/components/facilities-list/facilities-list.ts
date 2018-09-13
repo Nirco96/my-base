@@ -14,6 +14,8 @@ import {FacilitiesProvider} from "../../providers/facilities/facilities";
 })
 export class FacilitiesListComponent {
 
+  private _busFacility : Facility = new Facility("הסעות","bus", "black", null, null, null);
+
   @Input()
   facilities : Facility[];
 

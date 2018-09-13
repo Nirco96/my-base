@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {Transport} from "../../components/transport/transport.model";
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from "rxjs/Rx";
-import {Facility} from "../../components/facility/facility.model";
 import {map} from "rxjs/operators";
 import {observable} from "rxjs/index";
 

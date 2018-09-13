@@ -15,12 +15,14 @@ import { FacilitiesProvider } from '../providers/facilities/facilities';
 import {ComponentsModule} from "../components/components.module";
 import { TransportsProvider } from '../providers/transports/transports';
 import { FacilityPage } from '../pages/facility/facility';
+import {TransportsPage} from "../pages/transports/transports";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    FacilityPage
+    FacilityPage,
+    TransportsPage
 
   ],
   imports: [
@@ -36,7 +38,8 @@ import { FacilityPage } from '../pages/facility/facility';
   entryComponents: [
     MyApp,
     HomePage,
-    FacilityPage
+    FacilityPage,
+    TransportsPage
   ],
   providers: [
     StatusBar,
