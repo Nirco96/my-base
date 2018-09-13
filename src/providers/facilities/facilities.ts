@@ -3,7 +3,6 @@ import {Facility} from "../../components/facility/facility.model";
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from "rxjs";
 
-export interface Item { name: string; }
 
 /*
   Generated class for the FacilitiesProvider provider.
@@ -13,16 +12,16 @@ export interface Item { name: string; }
 */
 @Injectable()
 export class FacilitiesProvider {
-  private itemsCollection: AngularFirestoreCollection<Item>;
-  items: Observable<Item[]>;
+  private itemsCollection: AngularFirestoreCollection<Facility>;
+  items: Observable<Facility[]>;
 
-  constructor(public http: HttpClient, afs: AngularFirestore) {
+  constructor(afs: AngularFirestore) {
     console.log('Hello FacilitiesProvider Provider');
     this.itemsCollection = afs.collection("facilities");
     this.items = this.itemsCollection.valueChanges();
   }
 
-  getFacilities() : Facility[] {
-    return [new Facility("Gym", "tennisball"), new Facility("Rides", "bus"), new Facility("Shekem", "cafe")]
+  getFacilities() : Observable<Facility[]> {
+    return this.items;
   }
 }

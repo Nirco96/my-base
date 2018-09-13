@@ -25,7 +25,7 @@ import {ComponentsModule} from "../components/components.module";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
     ComponentsModule
   ],
   bootstrap: [IonicApp],
