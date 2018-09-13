@@ -8,11 +8,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { FacilitiesProvider } from '../providers/facilities/facilities';
 import {ComponentsModule} from "../components/components.module";
+import { FacilityPage } from '../pages/facility/facility';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    FacilityPage
+    
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,8 @@ import {ComponentsModule} from "../components/components.module";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    FacilityPage
   ],
   providers: [
     StatusBar,

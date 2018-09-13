@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
-
+import {NavController} from "ionic-angular";
+import {FacilityPage} from "../../pages/facility/facility";
 /**
  * Generated class for the FacilityComponent component.
  *
@@ -20,11 +21,16 @@ export class FacilityComponent {
   @Input()
   public displayName : string;
 
-  constructor() {
-
+  constructor(public navCtrl: NavController) {
+    
   }
 
   public onUpdate() : void {
     this._numOfUpdates++;
+  }
+
+  public openFacilityPage(): void{
+    console.log("or is king");
+    this.navCtrl.push(FacilityPage);
   }
 }
