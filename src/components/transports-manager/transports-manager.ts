@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Transport} from "../transport/transport.model";
 
 /**
  * Generated class for the TransportsManagerComponent component.
@@ -10,13 +11,27 @@ import { Component } from '@angular/core';
   selector: 'transports-manager',
   templateUrl: 'transports-manager.html'
 })
-export class TransportsManagerComponent {
+export class TransportsManagerComponent implements OnInit {
 
-  text: string;
+  closestArrivalTime: Date = new Date();
+
+  @Input()
+  public transports: Transport[];
 
   constructor() {
-    console.log('Hello TransportsManagerComponent Component');
-    this.text = 'Hello World';
   }
 
+  ngOnInit(): void {
+    this.computeClosestArrivalTime();
+  }
+
+  public computeClosestArrivalTime() : void {
+    // this.closestArrivalTime;
+    this.transports.forEach(transport => {
+      if (this.closestArrivalTime < transport.arrivalTime) {
+        this.closestArrivalTime = transport.arrivalTime;
+      }
+    });
+  }
 }
+
