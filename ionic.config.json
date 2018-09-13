@@ -1,0 +1,7 @@
+{
+  "name": "my-base",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
