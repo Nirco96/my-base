@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { FacilityComponent } from './facility/facility';
 import {IonicModule} from "ionic-angular";
+import {TransportsManagerComponent} from "./transports-manager/transports-manager";
+import {TransportComponent} from "./transport/transport";
 @NgModule({
-	declarations: [FacilityComponent],
 	imports: [IonicModule],
-	exports: [FacilityComponent]
+	declarations: [FacilityComponent,
+    TransportsManagerComponent,
+    TransportComponent],
+	exports: [FacilityComponent,
+    TransportsManagerComponent,
+    TransportComponent]
 })
 export class ComponentsModule {}
