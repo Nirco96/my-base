@@ -29,8 +29,10 @@
         </ion-card-content>
     
         <ion-item>
-          <ion-icon name='musical-notes' item-start style="color: #d03e84"></ion-icon>
-          {{pageName}}{{pageName}}
+          <ion-icon name='alarm' item-start style="color: #d03e84"></ion-icon>
+          <div *ngFor="let time of (facility.openingHours ? facility.openingHours.routine : [])">
+            {{getDayString(time.day) + "        " }}<span *ngFor="let hour of time.hours">{{hour.from + " - " + hour.to}}</span>
+            </div>
           <ion-badge item-end>9</ion-badge>
         </ion-item>
     

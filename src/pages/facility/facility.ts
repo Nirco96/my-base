@@ -18,7 +18,7 @@ export class FacilityPage {
 
   public facility : Facility;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-   this.facility = new Facility("f", "", "", "", "", "");
+   this.facility = new Facility("f", "", "", "", undefined, "");
   }
 
   ionViewDidLoad() {
@@ -26,6 +26,32 @@ export class FacilityPage {
     console.log(this.navParams);
     this.facility = this.navParams.get("facility");
 
+  }
+
+  getDayString(day : number) {
+    switch(day) {
+      case(0): {
+        return "ראשון";
+      }
+      case(1): {
+        return "שני";
+      }
+      case(2): {
+        return "שלישי";
+      }
+      case(3): {
+        return "רביעי";
+      }
+      case(4): {
+        return "חמישי";
+      }
+      case(5): {
+        return "שישי";
+      }
+      case(6): {
+        return "שבת";
+      }
+    }
   }
 
 }
