@@ -1,5 +1,4 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {Facility} from "../../components/facility/facility.model";
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from "rxjs";
@@ -23,7 +22,7 @@ export class FacilitiesProvider {
     this.items = this.itemsCollection.valueChanges();
   }
 
-  getFacilities(): Facility[] {
-    return []
+  getFacilities() : Facility[] {
+    return [new Facility("Gym", "tennisball"), new Facility("Rides", "bus"), new Facility("Shekem", "cafe")]
   }
 }

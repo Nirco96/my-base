@@ -12,6 +12,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { HomePage } from '../pages/home/home';
 import { FacilitiesProvider } from '../providers/facilities/facilities';
+import {ComponentsModule} from "../components/components.module";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FacilitiesProvider } from '../providers/facilities/facilities';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

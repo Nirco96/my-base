@@ -43,5 +43,8 @@
     "plugins": {
       "cordova-plugin-firebase": {}
     }
+  },
+  "config": {
+    "ionic_enable_lint": false
   }
 }

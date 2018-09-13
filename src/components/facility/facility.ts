@@ -14,19 +14,11 @@ export class FacilityComponent {
 
   private _numOfUpdates : number;
 
-  _iconName : string;
-  _displayName : string;
-
+  @Input()
+  public iconName : string;
 
   @Input()
-  set iconName(iconName) {
-    this._iconName = iconName;
-  }
-
-  @Input()
-  set displayName(displayName) {
-    this._displayName = displayName;
-  }
+  public displayName : string;
 
   constructor() {
 
