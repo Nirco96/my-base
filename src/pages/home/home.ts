@@ -12,6 +12,6 @@ export class HomePage {
   private facilities : Facility[];
 
   constructor(public navCtrl: NavController, private _facilityProvider : FacilitiesProvider) {
-    this.facilities = _facilityProvider.getFacilities();
+    _facilityProvider.getFacilities().subscribe((facilities) => this.facilities = facilities);
   }
 }

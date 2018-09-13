@@ -1,7 +1,22 @@
-<ion-grid>
-  <ion-row text-center>
-   <ion-col col-2 *ngFor="let facility of facilities">
-     <facility [displayName]="facility.name" [iconName]="facility.icon"></facility>
-   </ion-col>
-  </ion-row>
-</ion-grid>
+<ion-header>
+  <ion-navbar color="navbar">
+    <ion-title>
+      <div style="display: flex; align-items: center;">
+        <span style="flex: 1; text-align: center;">פלמחים</span>
+        <img style="height: 40px; width: 40px;" src="assets/imgs/Bacha_30_Palmachim.png"/>
+      </div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div style="background-color: rgba(0,191,255, 0.1); height: 100%;">
+    <facilities-list [facilities]="facilities"></facilities-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer>
