@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Facility} from "../../components/facility/facility.model";
+import {Facility} from "../../components/facility/models/facility.model";
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from "rxjs";
 import { map} from "rxjs/operators";

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Facility} from "../facility/facility.model";
+import {Facility} from "../facility/models/facility.model";
 import {FacilitiesProvider} from "../../providers/facilities/facilities";
 
 /**

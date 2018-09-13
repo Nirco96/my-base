@@ -3,8 +3,8 @@
   <ion-row justify-content-center>
     <ion-col>
     </ion-col>
-    <ion-col col-auto *ngFor="let facility of facilities">
-      <facility [displayName]="facility.name" [iconName]="facility.icon" [bgColor]="facility.bgcolor"></facility>
+    <ion-col col-4 col-lg-2 *ngFor="let facility of facilities">
+      <facility [facility]="facility" [displayName]="facility.name" [iconName]="facility.icon" [bgColor]="facility.bgcolor"></facility>
     </ion-col>
   </ion-row>
 </ion-grid>

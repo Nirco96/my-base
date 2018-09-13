@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {NavController} from "ionic-angular";
 import {FacilityPage} from "../../pages/facility/facility";
-import {Facility} from "./facility.model";
+import {Facility} from "./models/facility.model";
 /**
  * Generated class for the FacilityComponent component.
  *
@@ -38,6 +38,6 @@ export class FacilityComponent {
 
   public openFacilityPage(): void{
     console.log("or is king");
-    this.navCtrl.push(FacilityPage,{page:this.displayName});
+    this.navCtrl.push(FacilityPage,{facility: this.facility});
   }
 }
