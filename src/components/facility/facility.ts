@@ -31,6 +31,6 @@ export class FacilityComponent {
 
   public openFacilityPage(): void{
     console.log("or is king");
-    this.navCtrl.push(FacilityPage);
+    this.navCtrl.push(FacilityPage,{page:this.displayName});
   }
 }
