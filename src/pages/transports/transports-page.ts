@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {TransportsProvider} from "../../providers/transports/transports";
+import {TransportsProvider} from "../../providers/transports/transports.provider";
 import {Transport} from "../../components/transport/models/transport.model";
 import {ObservableInput} from "rxjs/index";
 import {Observable} from "rxjs/Rx";
@@ -15,7 +15,7 @@ import {Observable} from "rxjs/Rx";
 @IonicPage()
 @Component({
   selector: 'page-transports',
-  templateUrl: 'transports.html',
+  templateUrl: 'transports-page.html',
 })
 export class TransportsPage {
 

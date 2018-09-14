@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Transport} from "../transport/models/transport.model";
 import {Observable} from "rxjs/Rx";
-import {TransportsProvider} from "../../providers/transports/transports";
+import {TransportsProvider} from "../../providers/transports/transports.provider";
 import {TransportRoutine} from "../transport/models/transport-routine.model";
 
 /**

@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import {FacilitiesProvider} from "../../providers/facilities/facilities";
 import {Facility} from "../../components/facility/models/facility.model";
 import {Transport} from "../../components/transport/models/transport.model";
-import {TransportsProvider} from "../../providers/transports/transports";
+import {TransportsProvider} from "../../providers/transports/transports.provider";
 
 @Component({
   selector: 'page-home',

@@ -13,9 +13,9 @@ import { environment } from '../environments/environment';
 import { HomePage } from '../pages/home/home';
 import { FacilitiesProvider } from '../providers/facilities/facilities';
 import {ComponentsModule} from "../components/components.module";
-import { TransportsProvider } from '../providers/transports/transports';
+import { TransportsProvider } from '../providers/transports/transports.provider';
 import { FacilityPage } from '../pages/facility/facility';
-import {TransportsPage} from "../pages/transports/transports";
+import {TransportsPage} from "../pages/transports/transports-page";
 
 @NgModule({
   declarations: [

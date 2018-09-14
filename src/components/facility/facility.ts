@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {NavController} from "ionic-angular";
 import {FacilityPage} from "../../pages/facility/facility";
 import {Facility} from "./models/facility.model";
-import {TransportsPage} from "../../pages/transports/transports";
+import {TransportsPage} from "../../pages/transports/transports-page";
 /**
  * Generated class for the FacilityComponent component.
  *
