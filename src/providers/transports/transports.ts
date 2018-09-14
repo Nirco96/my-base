@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Transport} from "../../components/transport/transport.model";
+import {Transport} from "../../components/transport/models/transport.model";
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from "rxjs/Rx";
 import {map} from "rxjs/operators";
@@ -19,7 +19,6 @@ export class TransportsProvider {
   constructor(afs: AngularFirestore) {
     this.transportCollection = afs.collection("transports");
     let observable = this.transportCollection.valueChanges();
-
     this.transports = observable.pipe(map((transport) => {
       let array = [];
       transport.forEach(json => {

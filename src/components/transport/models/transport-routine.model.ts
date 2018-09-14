@@ -1,10 +1,10 @@
 export class TransportRoutine {
   private _day : number;
-  private _arrivalTimes : Array<string>;
+  private _departureTimes : Array<string>;
 
   constructor(day: number, arrivalTimes: Array<string>) {
     this._day = day;
-    this._arrivalTimes = arrivalTimes;
+    this._departureTimes = arrivalTimes;
   }
 
   get day(): number {
@@ -15,12 +15,12 @@ export class TransportRoutine {
     this._day = value;
   }
 
-  get arrivalTimes(): Array<string> {
-    return this._arrivalTimes;
+  get departureTimes(): Array<string> {
+    return this._departureTimes;
   }
 
-  set arrivalTimes(value: Array<string>) {
-    this._arrivalTimes = value;
+  set departureTimes(value: Array<string>) {
+    this._departureTimes = value;
   }
 
 }

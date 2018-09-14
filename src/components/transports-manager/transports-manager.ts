@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Transport} from "../transport/transport.model";
+import {Transport} from "../transport/models/transport.model";
+import {Observable} from "rxjs/Rx";
+import {TransportsProvider} from "../../providers/transports/transports";
+import {TransportRoutine} from "../transport/models/transport-routine.model";
 
 /**
  * Generated class for the TransportsManagerComponent component.
@@ -11,44 +14,61 @@ import {Transport} from "../transport/transport.model";
   selector: 'transports-manager',
   templateUrl: 'transports-manager.html'
 })
-export class TransportsManagerComponent implements OnInit {
+export class TransportsManagerComponent {
 
-  nearestTransport: Transport;
+  private _nearestTransport: Transport;
+  private _transportsToday: string[];
 
-  @Input()
-  public transports: Transport[];
+  private transports: Transport[];
 
-  constructor() {
-    // this.nearestTransport = new Transport(new Date(), ["Mahan"]);
+  constructor(private _transportProvider: TransportsProvider) {
+    this._transportsToday = [];
+    _transportProvider.getTransports().subscribe(transports => {
+      this.transports = transports;
+      this.computeNearestArrivalTime();
+    });
   }
 
-  ngOnInit(): void {
-    this.computeClosestArrivalTime();
-  }
-
-  public computeClosestArrivalTime(): void {
-    let transportsToday = [];
+  public computeNearestArrivalTime(): void {
     this.transports.forEach(transport => {
-      transportsToday = transport.routine.filter(routine => {
-        return routine.day == new Date().getDay();
-      })
+      // this._transportsToday = this._transportsToday.concat(
+      transport.routine.filter(routine => {
+        return (routine.day == new Date().getDay());
+      }).forEach(todayTransport => {
+        return todayTransport.departureTimes.forEach(departureTime => {
+          this._transportsToday.push(departureTime)
+        })
+      });
     });
 
+    // Mapping departure times of today to relative dates
+    let departureDates = this.mapDepartureTimesToDates(this._transportsToday);
+
     //
-    // this.transports.filter(transport => {
+    // this.transportsObservable.filter(transport => {
     // });
 
-    // assuming you have an array of Date objects - everything else is crap:
-    //
     // Sorting by the closest to the current date, and getting the first one after the current date
-    this.nearestTransport = this.transports.sort((a, b) => {
-      let distancea = Math.abs(new Date() - a.arrivalTime);
-      let distanceb = Math.abs(new Date() - b.arrivalTime);
+    let nextArrival = departureDates.sort((a, b) => {
+      let distancea = Math.abs(new Date() - a);
+      let distanceb = Math.abs(new Date() - b);
       return distancea - distanceb; // sort a before b when the distance is smaller
     }).filter(transport => {
-        return new Date() - transport.arrivalTime > 0;
+        return new Date() - transport > 0;
       }
     )[0];
+    debugger
+  }
+
+  private mapDepartureTimesToDates(departureTimes : string[]) : Date[]{
+    return departureTimes.map(departureTime => {
+      let hours = parseInt(departureTime.split(":")[0]);
+      let minutes = parseInt(departureTime.split(":")[1]);
+      let returnDate = new Date();
+      returnDate.setHours(hours);
+      returnDate.setMinutes(minutes);
+      return returnDate;
+    })
   }
 }
 
