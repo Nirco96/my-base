@@ -4,10 +4,10 @@
   ההסעה הבאה תגיע ב-
   {{_nearestTransportsAndTime[0].departureTime | date: "HH:mm"}}
   </div>
-  שעות ההגעה של ההסעות הבאות :
-  <div *ngFor="let transport of _nearestTransportsAndTime">
-    {{transport.departureTime | date: "HH:mm"}} - {{transport.name}}
-  </div>
+  ההסעות הבאות :
+    <transport *ngFor="let transportAndTime of _nearestTransportsAndTime" [transport]="transportAndTime.transport" [departureTime]="transportAndTime.departureTime">
+
+    </transport>
 </div>
 
 <ng-template #noRidesToday>

@@ -57,8 +57,6 @@ export class TransportsManagerComponent {
         return transport.departureTime - Date.now() > 0;
       }
     );
-
-    debugger
   }
 
   private mapTodaysTransportTimesToDates(transportsToday: Transport[]): any[] {

@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {Transport} from "./models/transport.model";
 
 /**
  * Generated class for the TransportComponent component.
@@ -12,10 +13,10 @@ import {Component, Input} from '@angular/core';
 })
 export class TransportComponent {
   @Input()
-  public arrivalTime : Date;
+  public transport : Transport;
 
   @Input()
-  public stations : Array<string>;
+  public departureTime : Date;
 
   constructor() {
   }
