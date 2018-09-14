@@ -1,8 +1,10 @@
 <!-- Generated template for the TransportComponent component -->
 <div>
-  {{departureTime | date:"HH:mm"}}
+  {{transport.name}} - יוצאת בשעה {{departureTime | date:"HH:mm"}}
   <!--Stations :-->
-  <!--<div *ngFor="let station of transport.stations">-->
-    <!--{{station}}}-->
-  <!--</div>-->
+  ועוברת בתחנות:
+  <ul *ngFor="let station of transport.stations">
+    {{station.name}} -
+    {{departureTime | amAdd: station.delta : 'minutes' | date:"HH:mm"}}
+  </ul>
 </div>

@@ -5,12 +5,13 @@ import { FacilitiesListComponent } from './facilities-list/facilities-list';
 import {FacilitiesProvider} from "../providers/facilities/facilities";
 import {TransportsManagerComponent} from "./transports-manager/transports-manager";
 import {TransportComponent} from "./transport/transport";
+import {MomentModule} from "angular2-moment";
 @NgModule({
 	declarations: [FacilityComponent,
     FacilitiesListComponent,
     TransportsManagerComponent,
     TransportComponent],
-	imports: [IonicModule],
+	imports: [IonicModule, MomentModule],
   providers: [FacilitiesProvider],
 	exports: [FacilityComponent,
     FacilitiesListComponent,

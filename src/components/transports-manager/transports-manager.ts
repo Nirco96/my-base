@@ -16,13 +16,12 @@ import {TransportRoutine} from "../transport/models/transport-routine.model";
 })
 export class TransportsManagerComponent {
 
-  private _nearestTransportsAndTime: any;
-  private _transportsToday: Transport[];
+  private _nearestTransportsAndTime: any = [];
 
   private transports: Transport[];
 
   constructor(private _transportProvider: TransportsProvider) {
-    this._transportsToday = [];
+    // this._nearestTransportsAndTime = [];
     _transportProvider.getTransports().subscribe(transports => {
       this.transports = transports;
       this.computeNearestArrivalTime();
@@ -30,19 +29,18 @@ export class TransportsManagerComponent {
   }
 
   public computeNearestArrivalTime(): void {
+    let transportsToday = [];
     this.transports.forEach(transport => {
       // this._transportsToday = this._transportsToday.concat(
-      transport.routine.forEach(routine => {
+      transport.routine.filter(routine => {
         if (routine.day == new Date().getDay()) {
-          this._transportsToday.push(transport);
+          transportsToday.push(transport);
         }
       })
-      // return todayTransport.departureTimes.forEach(departureTime => {
-      //   this._transportsToday.push(departureTime)
     });
 
     // Mapping departure times of today to object containing transport and its relative date
-    let departureDates = this.mapTodaysTransportTimesToDates(this._transportsToday);
+    let departureDates = this.mapTodaysTransportTimesToDates(transportsToday);
 
     //
     // this.transportsObservable.filter(transport => {
