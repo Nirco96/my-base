@@ -16,8 +16,8 @@ import {TransportRoutine} from "../transport/models/transport-routine.model";
 })
 export class TransportsManagerComponent {
 
-  private _nearestTransport: Transport;
-  private _transportsToday: string[];
+  private _nearestTransportAndTime: any;
+  private _transportsToday: Transport[];
 
   private transports: Transport[];
 
@@ -32,43 +32,53 @@ export class TransportsManagerComponent {
   public computeNearestArrivalTime(): void {
     this.transports.forEach(transport => {
       // this._transportsToday = this._transportsToday.concat(
-      transport.routine.filter(routine => {
-        return (routine.day == new Date().getDay());
-      }).forEach(todayTransport => {
-        return todayTransport.departureTimes.forEach(departureTime => {
-          this._transportsToday.push(departureTime)
-        })
-      });
+      transport.routine.forEach(routine => {
+        if (routine.day == new Date().getDay()) {
+          this._transportsToday.push(transport);
+        }
+      })
+      // return todayTransport.departureTimes.forEach(departureTime => {
+      //   this._transportsToday.push(departureTime)
     });
 
-    // Mapping departure times of today to relative dates
-    let departureDates = this.mapDepartureTimesToDates(this._transportsToday);
+    // Mapping departure times of today to object containing transport and its relative date
+    let departureDates = this.mapTodaysTransportTimesToDates(this._transportsToday);
 
     //
     // this.transportsObservable.filter(transport => {
     // });
 
     // Sorting by the closest to the current date, and getting the first one after the current date
-    let nextArrival = departureDates.sort((a, b) => {
-      let distancea = Math.abs(new Date() - a);
-      let distanceb = Math.abs(new Date() - b);
+    this._nearestTransportAndTime = departureDates.sort((a, b) => {
+      let distancea = Math.abs(Date.now() - a.departureTime);
+      let distanceb = Math.abs(Date.now() - b.departureTime);
       return distancea - distanceb; // sort a before b when the distance is smaller
     }).filter(transport => {
-        return new Date() - transport > 0;
+        return transport.departureTime - Date.now() > 0;
       }
     )[0];
     debugger
   }
 
-  private mapDepartureTimesToDates(departureTimes : string[]) : Date[]{
-    return departureTimes.map(departureTime => {
-      let hours = parseInt(departureTime.split(":")[0]);
-      let minutes = parseInt(departureTime.split(":")[1]);
-      let returnDate = new Date();
-      returnDate.setHours(hours);
-      returnDate.setMinutes(minutes);
-      return returnDate;
-    })
+  private mapTodaysTransportTimesToDates(transportsToday: Transport[]): any[] {
+    let departureTimes = [];
+    transportsToday.forEach(transport => {
+      transport.routine.forEach(routine => {
+        routine.departureTimes.forEach(depatureTime => {
+          let hours = parseInt(depatureTime.split(":")[0]);
+          let minutes = parseInt(depatureTime.split(":")[1]);
+          let returnDate = new Date();
+          returnDate.setHours(hours);
+          returnDate.setMinutes(minutes);
+          departureTimes.push({
+            "transport" : transport,
+            "departureTime" : returnDate
+          });
+        })
+      })
+    });
+
+    return departureTimes;
   }
 }
 
