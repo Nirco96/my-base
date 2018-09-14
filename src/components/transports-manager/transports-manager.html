@@ -1,7 +1,13 @@
 <!-- Generated template for the TransportsManagerComponent component -->
-<div *ngIf="this._transportsToday.length > 0; else noRidesToday" class="next-arrival">
+<div *ngIf="_transportsToday.length > 0; else noRidesToday" >
+  <div class="next-arrival">
   ההסעה הבאה תגיע ב-
-  {{_nearestTransportAndTime.departureTime | date: "HH:mm"}}
+  {{_nearestTransportsAndTime[0].departureTime | date: "HH:mm"}}
+  </div>
+  שעות ההגעה של ההסעות הבאות :
+  <div *ngFor="let transport of _nearestTransportsAndTime">
+    {{transport.departureTime | date: "HH:mm"}} - {{transport.}}
+  </div>
 </div>
 
 <ng-template #noRidesToday>

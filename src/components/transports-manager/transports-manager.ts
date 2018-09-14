@@ -16,7 +16,7 @@ import {TransportRoutine} from "../transport/models/transport-routine.model";
 })
 export class TransportsManagerComponent {
 
-  private _nearestTransportAndTime: any;
+  private _nearestTransportsAndTime: any;
   private _transportsToday: Transport[];
 
   private transports: Transport[];
@@ -49,14 +49,15 @@ export class TransportsManagerComponent {
     // });
 
     // Sorting by the closest to the current date, and getting the first one after the current date
-    this._nearestTransportAndTime = departureDates.sort((a, b) => {
+    this._nearestTransportsAndTime = departureDates.sort((a, b) => {
       let distancea = Math.abs(Date.now() - a.departureTime);
       let distanceb = Math.abs(Date.now() - b.departureTime);
       return distancea - distanceb; // sort a before b when the distance is smaller
     }).filter(transport => {
         return transport.departureTime - Date.now() > 0;
       }
-    )[0];
+    );
+
     debugger
   }
 
