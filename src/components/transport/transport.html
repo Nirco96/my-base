@@ -3,8 +3,12 @@
   {{transport.name}} - יוצאת בשעה {{departureTime | date:"HH:mm"}}
   <!--Stations :-->
   ועוברת בתחנות:
-  <ul *ngFor="let station of transport.stations">
-    {{station.name}} -
-    {{departureTime | amAdd: station.delta : 'minutes' | date:"HH:mm"}}
+  <ul>
+    <li *ngFor="let station of transport.stations">
+      <div class="next-arrival">
+        {{station.name}} -
+        {{departureTime | amAdd: station.delta : 'minutes' | date:"HH:mm"}}
+      </div>
+    </li>
   </ul>
 </div>
