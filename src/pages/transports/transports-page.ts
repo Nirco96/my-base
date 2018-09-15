@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {TransportsProvider} from "../../providers/transports/transports.provider";
 import {Transport} from "../../components/transport/models/transport.model";
@@ -18,8 +18,12 @@ import {Observable} from "rxjs/Rx";
   templateUrl: 'transports-page.html',
 })
 export class TransportsPage {
+  private transports: Transport[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    if (!this.transports) {
+      this.transports = this.navParams.get("transports");
+    }
   }
 
   ionViewDidLoad() {

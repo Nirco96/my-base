@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Transport} from "../../components/transport/models/transport.model";
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from "rxjs/Rx";
 import {map} from "rxjs/operators";
 import {observable} from "rxjs/index";
+import {Station} from "../../components/transport/models/station.model";
 
 /*
   Generated class for the TransportsProvider provider.
@@ -13,26 +14,20 @@ import {observable} from "rxjs/index";
 */
 @Injectable()
 export class TransportsProvider {
-  private transportCollection: AngularFirestoreCollection<Transport>;
   transports: Observable<Transport[]>;
 
   constructor(afs: AngularFirestore) {
-    this.transportCollection = afs.collection("transports");
-    let observable = this.transportCollection.valueChanges();
-    this.transports = observable.pipe(map((transport) => {
+    this.transports = afs.collection('transports').valueChanges().pipe(map(transports => {
       let array = [];
-      transport.forEach(json => {
-        array.push(Transport.fromJson(json))
+      transports.forEach((transport: Transport) => {
+        array.push(Transport.fromJson(transport));
       });
+
       return array;
     }));
   }
 
   getTransports() : Observable<Transport[]> {
     return this.transports;
-  }
-
-  public getTransportsNull() {
-    // return [new Transport(new Date(), ["Mahan", "Herev Magen"]), new Transport(new Date("September 13, 2018 14:20:00"), ["Tree Square", "infirmary"])]
   }
 }

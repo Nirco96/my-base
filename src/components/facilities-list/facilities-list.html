@@ -2,7 +2,7 @@
 <ion-grid>
   <ion-row justify-content-center>
     <ion-col>
-      <facility [facility]="_busFacility" [isTransport]="false"></facility>
+      <facility [facility]="_busFacility" [transports]="transports"></facility>
     </ion-col>
     <ion-col col-4 col-lg-2 *ngFor="let facility of facilities">
       <facility [facility]="facility"></facility>

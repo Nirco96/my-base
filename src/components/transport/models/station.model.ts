@@ -9,8 +9,8 @@ export class Station {
     this._delta = delta;
   }
 
-  static fromJson(json : any) {
-    return new Station(json.delta, json.id, json.name);
+  static fromJson(delta: number, json : any) {
+    return new Station(delta, json.id, json.name);
   }
 
   get name(): string {

@@ -3,6 +3,8 @@ import {NavController} from "ionic-angular";
 import {FacilityPage} from "../../pages/facility/facility";
 import {Facility} from "./models/facility.model";
 import {TransportsPage} from "../../pages/transports/transports-page";
+import {Observable} from "rxjs/Rx";
+import {Transport} from "../transport/models/transport.model";
 /**
  * Generated class for the FacilityComponent component.
  *
@@ -30,7 +32,7 @@ export class FacilityComponent {
   public displayName : string;
 
   @Input()
-  public isTransport : boolean = true;
+  public transports : Transport[] = undefined;
 
   constructor(public navCtrl: NavController) {
 
@@ -41,10 +43,10 @@ export class FacilityComponent {
   }
 
   public openFacilityPage(): void{
-    if (this.isTransport) {
-      this.navCtrl.push(FacilityPage, {facility: this.facility});
+    if (this.transports) {
+      this.navCtrl.push(TransportsPage, {transports : this.transports})
     } else {
-      this.navCtrl.push(TransportsPage)
+      this.navCtrl.push(FacilityPage, {facility: this.facility});
     }
   }
 }

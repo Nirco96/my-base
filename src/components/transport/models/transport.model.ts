@@ -4,9 +4,9 @@ import {TransportRoutine} from "./transport-routine.model";
 export class Transport {
   private _name : string;
   private _routine : Array<TransportRoutine>;
-  private _stations : Array<Station>;
+  private _stations : any;
 
-  constructor (name : string, routine : Array<TransportRoutine>, stations: Array<Station>) {
+  constructor (name : string, routine : Array<TransportRoutine>, stations: any) {
     this._name = name;
     this._routine = routine;
     this._stations = stations;
@@ -24,11 +24,11 @@ export class Transport {
     this._routine = value;
   }
 
-  get stations(): Array<Station> {
+  get stations(): any {
     return this._stations;
   }
 
-  set stations(value: Array<Station>) {
+  set stations(value: any) {
     this._stations = value;
   }
 

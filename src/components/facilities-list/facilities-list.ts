@@ -1,6 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {Facility} from "../facility/models/facility.model";
 import {FacilitiesProvider} from "../../providers/facilities/facilities";
+import {Observable} from "rxjs/Rx";
+import {Transport} from "../transport/models/transport.model";
 
 /**
  * Generated class for the FacilitiesListComponent component.
@@ -19,7 +21,10 @@ export class FacilitiesListComponent {
   @Input()
   facilities : Facility[];
 
-  constructor(private _facilitiesProvider : FacilitiesProvider) {
+  @Input()
+  transports : Transport[];
+
+  constructor() {
 
   }
 
